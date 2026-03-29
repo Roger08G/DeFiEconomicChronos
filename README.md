@@ -8,13 +8,6 @@
 
 ---
 
-> **nSLOC**: ~850  
-> **Contracts**: 6  
-> **Audited Vulnerabilities**: 5 (2 Critical, 2 High, 1 Medium)  
-> **Chain**: Ethereum Mainnet (Anvil / Hardhat fork)
-
----
-
 ## 1. Protocol Overview
 
 **ChronosVault** is a time-locked vault system with an integrated constant-product AMM, staking rewards with position transferability, an upgradeable proxy architecture, governance timelock, and a cross-contract balance registry. Users lock tokens for time-weighted governance, earn streaming rewards, and trade via the protocol's AMM.
