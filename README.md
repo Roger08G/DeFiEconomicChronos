@@ -1,10 +1,10 @@
 # ChronosVault Protocol — Bug Bounty Lab
 
-**Category**: Time-Locked Vault · Constant-Product AMM · Upgradeable Proxy · Governance · Cross-Contract State  
-**Difficulty**: Hard  
-**Solidity**: ^0.8.20 · **Framework**: Foundry  
-**Total Findings to Discover**: 5 (2 Critical · 2 High · 1 Medium)  
-**Lab Type**: Intentionally Vulnerable — Educational Use Only
+> **Category**: Time-Locked Vault · Constant-Product AMM · Upgradeable Proxy · Governance · Cross-Contract State  
+> **Difficulty**: Hard  
+> **Solidity**: `^0.8.20` · **Framework**: Foundry  
+> **Total Findings to Discover**: 5 (2 Critical · 2 High · 1 Medium)  
+> **Lab Type**: Intentionally Vulnerable — Educational Use Only
 
 ---
 
