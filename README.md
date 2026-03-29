@@ -1,10 +1,17 @@
-# ChronosVault Protocol — Time-Locked Vault & AMM System
+# ChronosVault Protocol — Bug Bounty Lab
 
-> **Benchmark ID**: `defi_economic_invariant_6`  
+**Category**: Time-Locked Vault · Constant-Product AMM · Upgradeable Proxy · Governance · Cross-Contract State  
+**Difficulty**: Hard  
+**Solidity**: ^0.8.20 · **Framework**: Foundry  
+**Total Findings to Discover**: 5 (2 Critical · 2 High · 1 Medium)  
+**Lab Type**: Intentionally Vulnerable — Educational Use Only
+
+---
+
 > **nSLOC**: ~850  
 > **Contracts**: 6  
-> **Planted Vulnerabilities**: 5 (2 Critical, 2 High, 1 Medium)  
-> **Chain**: Ethereum Mainnet (simulated)
+> **Audited Vulnerabilities**: 5 (2 Critical, 2 High, 1 Medium)  
+> **Chain**: Ethereum Mainnet (Anvil / Hardhat fork)
 
 ---
 
@@ -68,7 +75,7 @@ The protocol's diversity of patterns (AMM invariants, proxy storage, governance 
 
 ## 4. Scope & Focus
 
-All 6 contracts are in scope. This benchmark tests **diverse vulnerability categories** across different DeFi primitives:
+All 6 contracts are in scope. The audit covers **diverse vulnerability categories** across different DeFi primitives:
 - AMM invariant accounting (fee accumulation vs LP share calculation)
 - Reward accounting integrity across transferable positions
 - Proxy storage layout safety in upgradeable contracts
@@ -235,19 +242,9 @@ More critically, `block.timestamp` has a ~15-second miner tolerance. Combined wi
 
 ---
 
-## 7. Key Differences from Previous Benchmarks
+## 7. Security Design Rationale
 
-| Aspect | Meridian (#1) | NexusYield (#2) | Aether (#3) | Spectra (#4) | NexusYield (#5) | **Chronos (#6)** |
-|--------|--------------|-----------------|-------------|--------------|-----------------|-------------------|
-| Protocol Type | AMM + Lending | Synthetic / CDP | Yield Vault | Liquid Restaking | Leveraged Yield | **Vault + AMM + Proxy** |
-| Unique Pattern | FOT accounting | P-product truncation | Flash stake | Bonding asymmetry | Read-only reentrancy | **Storage collision** |
-| Diverse Categories | 3 | 3 | 3 | 5 | 3 | **5 (AMM, reward, proxy, timelock, cross-contract)** |
-
----
-
-## 8. Design Philosophy
-
-This benchmark tests SolGuard's **breadth of detection** across fundamentally different vulnerability categories:
+The protocol spans **five distinct vulnerability categories** across different DeFi primitives:
 
 1. **AMM invariant analysis** (V-01): Fee accumulation breaking k-constant assumptions
 2. **Reward accounting integrity** (V-02): State not propagated on position transfer
@@ -257,9 +254,15 @@ This benchmark tests SolGuard's **breadth of detection** across fundamentally di
 
 ---
 
-## 9. Build & Test
+## 8. Build & Test
 
 ```bash
-cd server/examples/defi_economic_invariant_6
+# Build all contracts
 forge build
+
+# Run the test suite
+forge test -vv
+
+# Generate a gas and coverage report
+forge coverage
 ```
